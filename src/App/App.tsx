@@ -12,7 +12,7 @@ export default function App() {
     return <div>loading</div>;
   } else {
     return (
-      <div className="font-bold text-green-400 h-ful grid grid-rows-a1a">
+      <div className="grid grid-rows-a1a">
         <Header />
         <Routes>
           <Route path={routes.index} element={<Dashboard />} />

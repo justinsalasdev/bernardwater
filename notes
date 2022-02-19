@@ -1,42 +1,5 @@
-  "@firebase/analytics-compat@0.1.6":
-    peerDependencies:
-      "@firebase/app":"0.x"
+theme cyan
+greyscale slate
 
-  "@firebase/app-check-compat@0.2.3":
-    peerDependencies:
-      "@firebase/app":"0.x"
-
-  "@firebase/auth-compat@0.2.9":
-    peerDependencies:
-      "@firebase/app":"0.x"
-      "@firebase/app-types":"0.x"
-
-  "@firebase/database@0.12.5":
-    peerDependencies:
-      "@firebase/app-types":"0.x"
-  "@firebase/firestore-compat@0.1.14":
-    peerDependencies:
-      "@firebase/app":"0.x"
-      "@firebase/app-types":"0.x"
-
-  "@firebase/functions-compat@0.1.9":
-    peerDependencies:
-      "@firebase/app":"0.x"
-
-  "@firebase/functions@0.7.8":
-    peerDependencies:
-      "@firebase/app-types":"0.x"
-
-  "@firebase/messaging-compat@0.1.8":
-    peerDependencies:
-      "@firebase/app":"0.x"
-  "@firebase/performance-compat@0.1.5":
-    peerDependencies:
-      "@firebase/app":"0.x"
-  "@firebase/remote-config-compat@0.1.5":
-    peerDependencies:
-      "@firebase/app":"0.x"
-  "@firebase/storage-compat@0.1.10":
-    peerDependencies:
-      "@firebase/app":"0.x"
-      "@firebase/app-types":"0.x"
+positive - emerald
+negative - rose
