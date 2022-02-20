@@ -3,16 +3,18 @@ import TextInput from "./TextInput";
 import useUpdateProfile from "./useUpdateProfile";
 
 export default function EditForm() {
-  const { updateProfile, isEditing, isSubmitting, startEdit } =
-    useUpdateProfile();
+  const {
+    updateProfile,
+    isEditing,
+    isSubmitDisabled,
+    isSubmitting,
+    startEdit,
+  } = useUpdateProfile();
 
   return (
-    <form
-      className="justify-self-center self-start mt-8 w-full max-w-md rounded-md grid"
-      onSubmit={updateProfile}
-    >
+    <form className="w-full max-w-md rounded-md grid" onSubmit={updateProfile}>
       {(isEditing && (
-        <ProfileAction type="submit" disabled={isSubmitting}>
+        <ProfileAction type="submit" disabled={isSubmitDisabled}>
           {(isSubmitting && <Loader classes="pb-0" text="..saving" />) ||
             "save"}
         </ProfileAction>

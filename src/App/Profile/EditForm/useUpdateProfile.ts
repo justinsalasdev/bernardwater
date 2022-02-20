@@ -9,13 +9,11 @@ export default function useUpdateProfile() {
   const user = useGetter((state) => state.auth.user);
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, isValid, isDirty },
   } = useFormContext<Profile>();
 
   const [isEditing, setEditing] = useState(false);
   async function startEdit() {
-    //delay 10s so click won't trigger submit on change of button type
-    await new Promise((r) => setTimeout(r, 100));
     setEditing(true);
   }
 
@@ -36,5 +34,6 @@ export default function useUpdateProfile() {
     startEdit,
     isEditing,
     isSubmitting,
+    isSubmitDisabled: !isValid || !isDirty || isSubmitting,
   };
 }

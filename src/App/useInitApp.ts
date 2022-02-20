@@ -1,10 +1,20 @@
 import { initializeApp } from "firebase/app";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { updateUser } from "services/auth/auth";
 import { useSetter } from "store/accessors";
 import { getAuth } from "firebase/auth";
+import {
+  doc,
+  getFirestore,
+  onSnapshot,
+  Unsubscribe as FireStoreUnsubscribe,
+} from "firebase/firestore";
+import { tables } from "constants/tables";
+import { profileConverter } from "./Profile/schema";
+import { setProfileLoading, updateProfile } from "services/profile/profile";
 export default function useInitApp() {
   const [loading, setLoading] = useState(true);
+  const profileSubscribeRef = useRef<FireStoreUnsubscribe>();
   const dispatch = useSetter();
 
   useEffect(() => {
@@ -23,7 +33,8 @@ export default function useInitApp() {
       const { photoURL, displayName, phoneNumber, uid } = currentUser;
       dispatch(updateUser({ photoURL, displayName, phoneNumber, uid }));
     }
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    //subscribe auth
+    const unsubscribeAuth = auth.onAuthStateChanged((user) => {
       if (!user) {
         dispatch(updateUser(null));
       } else {
@@ -35,11 +46,31 @@ export default function useInitApp() {
             uid: user.uid,
           })
         );
+
+        //subscribe to profile change
+        const db = getFirestore();
+        const docRef = doc(db, tables.users, user.uid).withConverter(
+          profileConverter
+        );
+        const unsubscribe = onSnapshot(docRef, (doc) => {
+          if (doc.exists()) {
+            const data = doc.data();
+            dispatch(setProfileLoading(true));
+            dispatch(updateProfile(data));
+            dispatch(setProfileLoading(false));
+          }
+        });
+
+        profileSubscribeRef.current = unsubscribe;
       }
     });
+
     setLoading(false);
     return () => {
-      unsubscribe();
+      unsubscribeAuth();
+      if (profileSubscribeRef.current) {
+        profileSubscribeRef.current();
+      }
     };
   }, []);
 

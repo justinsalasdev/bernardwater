@@ -1,3 +1,3 @@
 export default function Dashboard() {
-  return <p>dashboard</p>;
+  return <div className="grid content-start bg-rose-100"></div>;
 }
