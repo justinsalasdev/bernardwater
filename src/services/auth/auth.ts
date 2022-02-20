@@ -1,7 +1,7 @@
 import { User } from "firebase/auth";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type AppUser = Pick<User, "photoURL" | "displayName">;
+type AppUser = Pick<User, "photoURL" | "displayName" | "phoneNumber" | "uid">;
 
 const initialState: { user: AppUser | null } = { user: null };
 export const auth = createSlice({

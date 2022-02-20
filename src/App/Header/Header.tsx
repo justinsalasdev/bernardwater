@@ -1,18 +1,18 @@
 import { useGetter } from "store/accessors";
-import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import logo from "assets/icons/logo.svg";
 import UserMenu from "./UserMenu";
 import { NavLink } from "react-router-dom";
 import { routes } from "constants/routes";
+import { getAuth } from "firebase/auth";
 
 export default function Header() {
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const user = useGetter((state) => state.auth.user);
 
   async function handleSignOut() {
-    const auth = getAuth();
     setIsLoggingOut(true);
+    const auth = getAuth();
     await auth.signOut();
     setIsLoggingOut(false);
   }

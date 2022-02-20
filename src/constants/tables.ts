@@ -1,1 +1,3 @@
-export enum tables {}
+export enum tables {
+  users = "users",
+}

@@ -1,3 +1,4 @@
+import { FirestoreDataConverter } from "firebase/firestore";
 import * as yup from "yup";
 
 type PartialRecord<K extends keyof any, T> = {
@@ -19,3 +20,8 @@ const profileObject: PartialRecord<keyof Profile, yup.AnySchema> = {
 };
 
 export const schema = yup.object(profileObject);
+
+export const profileConverter: FirestoreDataConverter<Profile> = {
+  toFirestore: (profile) => profile,
+  fromFirestore: (snapshot, options) => snapshot.data(options) as Profile,
+};

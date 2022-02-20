@@ -1,4 +1,4 @@
-import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+import { signInWithPopup, FacebookAuthProvider, getAuth } from "firebase/auth";
 import { Navigate } from "react-router-dom";
 import { routes } from "constants/routes";
 import { useGetter } from "store/accessors";
@@ -8,8 +8,8 @@ export default function Auth() {
   const user = useGetter((state) => state.auth.user);
   async function signIn() {
     try {
-      const auth = getAuth();
       const provider = new FacebookAuthProvider();
+      const auth = getAuth();
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
       const credential = FacebookAuthProvider.credentialFromResult(result);
