@@ -8,6 +8,7 @@ import useInitApp from "./useInitApp";
 import Profile from "./Profile/Profile";
 import Orders from "./Orders/Orders";
 import RouteGuard from "components/RouteGuard";
+import ProfileContext from "./Profile/ProfileContext";
 
 export default function App() {
   const { isAppLoading } = useInitApp();
@@ -18,15 +19,32 @@ export default function App() {
       <div className="grid grid-rows-a1a">
         <Header />
         <Routes>
-          <Route index element={<RouteGuard Component={Dashboard} />} />
+          <Route
+            index
+            element={
+              <RouteGuard>
+                <Dashboard />
+              </RouteGuard>
+            }
+          />
           <Route path={routes.auth} element={<Auth />} />
           <Route
             path={routes.profile}
-            element={<RouteGuard Component={Profile} />}
+            element={
+              <RouteGuard>
+                <ProfileContext>
+                  <Profile />
+                </ProfileContext>
+              </RouteGuard>
+            }
           />
           <Route
             path={routes.orders}
-            element={<RouteGuard Component={Orders} />}
+            element={
+              <RouteGuard>
+                <Orders />
+              </RouteGuard>
+            }
           />
         </Routes>
         <Footer />

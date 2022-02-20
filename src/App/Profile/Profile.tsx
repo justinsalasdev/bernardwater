@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import TextInput from "./TextInput";
+import useUpdateProfile from "./useUpdateProfile";
 
 export default function Profile() {
   const [isEditing, setEditing] = useState(false);
+
+  const { updateProfile } = useUpdateProfile();
 
   async function startEdit() {
     //delay 10s so click won't trigger submit on change of button type
@@ -13,10 +16,7 @@ export default function Profile() {
   return (
     <form
       className="justify-self-center self-start mt-8 w-full max-w-md rounded-md grid"
-      onSubmit={(e: any) => {
-        e.preventDefault();
-        console.log("hello world");
-      }}
+      onSubmit={updateProfile}
     >
       {(isEditing && <ProfileAction type="submit">save</ProfileAction>) || (
         <ProfileAction type="button" onClick={startEdit}>
@@ -24,16 +24,19 @@ export default function Profile() {
         </ProfileAction>
       )}
       <TextInput
+        id="fullName"
         title="Full name"
         placeholder="Juan Dela Cruz"
         isEditing={isEditing}
       />
       <TextInput
+        id="mobileNumber"
         title="Mobile number"
         placeholder="09982223429"
         isEditing={isEditing}
       />
       <TextInput
+        id="address"
         title="Address"
         placeholder="Lot 261 Block 9 Subdivision, San Rafael, Rizal"
         isEditing={isEditing}
