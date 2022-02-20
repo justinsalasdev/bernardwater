@@ -8,11 +8,12 @@ import useInitApp from "./useInitApp";
 import Profile from "./Profile/Profile";
 import Orders from "./Orders/Orders";
 import RouteGuard from "components/RouteGuard";
+import Loader from "components/Loader";
 
 export default function App() {
   const { isAppLoading } = useInitApp();
   if (isAppLoading) {
-    return <div>loading</div>;
+    return <Loader classes="text-cyan-500 place-self-center" />;
   } else {
     return (
       <div className="grid grid-rows-a1a">

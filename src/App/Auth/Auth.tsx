@@ -37,7 +37,7 @@ export default function Auth() {
           hover:shadow-xl hover:shadow-cyan-300/20 active:translate-x-2  font-bold"
           onClick={signIn}
         >
-          <Icon type={iconTypes.fb_square} size={20} />
+          <Icon type={iconTypes.fb} size={20} />
           <span>Facebook</span>
         </button>
       </div>

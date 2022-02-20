@@ -10,7 +10,7 @@ export default function TextInput(props: {
 }) {
   const {
     register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useFormContext<Profile>();
 
   return (
@@ -24,13 +24,16 @@ export default function TextInput(props: {
       <input
         id={`__${props.id}`}
         {...register(props.id)}
+        disabled={isSubmitting}
         readOnly={!props.isEditing}
         placeholder={props.placeholder}
         type="text"
-        className="mt-1 w-full bg-slate-50/30 border text-slate-700 shadow-inner p-4 rounded-md
+        className="mt-1 w-full bg-slate-50/30 shadow-inner border text-slate-700 p-4 rounded-md
+         placeholder:text-slate-300 
+         disabled:bg-slate-100/70
          focus:outline-none focus:ring-2 focus:ring-cyan-700/20
-         placeholder:text-slate-300 read-only:pointer-events-none read-only:shadow-none
-         read-only:border-t-transparent read-only:border-x-transparent 
+         read-only:pointer-events-none read-only:shadow-none
+         read-only:bg-white read-only:border-t-transparent read-only:border-x-transparent 
          read-only:rounded-none read-only:placeholder:invisible"
       />
       <ErrorMessage

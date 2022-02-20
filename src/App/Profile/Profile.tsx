@@ -5,6 +5,7 @@ import { useGetter } from "store/accessors";
 import { tables } from "constants/tables";
 import ProfileEditor from "./ProfileEditor";
 import EditForm from "./EditForm/EditForm";
+import Loader from "components/Loader";
 
 export default function Profile() {
   const [isGettingUserData, setIsGettingUserData] = useState(true);
@@ -34,7 +35,9 @@ export default function Profile() {
   };
 
   if (isGettingUserData) {
-    return <div>loading</div>;
+    return (
+      <Loader classes="text-cyan-400 justify-self-center self-start mt-8" />
+    );
   } else {
     return (
       <ProfileEditor {...initialProfileData}>

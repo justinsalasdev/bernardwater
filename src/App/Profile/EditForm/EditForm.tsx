@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import Loader from "components/Loader";
 import TextInput from "./TextInput";
 import useUpdateProfile from "./useUpdateProfile";
 
 export default function EditForm() {
-  const { updateProfile } = useUpdateProfile();
-
-  const [isEditing, setEditing] = useState(false);
-  async function startEdit() {
-    //delay 10s so click won't trigger submit on change of button type
-    await new Promise((r) => setTimeout(r, 100));
-    setEditing(true);
-  }
+  const { updateProfile, isEditing, isSubmitting, startEdit } =
+    useUpdateProfile();
 
   return (
     <form
       className="justify-self-center self-start mt-8 w-full max-w-md rounded-md grid"
       onSubmit={updateProfile}
     >
-      {(isEditing && <ProfileAction type="submit">save</ProfileAction>) || (
+      {(isEditing && (
+        <ProfileAction type="submit" disabled={isSubmitting}>
+          {(isSubmitting && <Loader classes="pb-0" text="..saving" />) ||
+            "save"}
+        </ProfileAction>
+      )) || (
         <ProfileAction type="button" onClick={startEdit}>
           edit profile
         </ProfileAction>
@@ -50,7 +49,7 @@ function ProfileAction(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...restProps}
-      className="bg-cyan-600 justify-self-end px-4 py-1 rounded-sm 
+      className="bg-cyan-600 disabled:bg-slate-400 justify-self-end px-4 py-1 rounded-sm 
         uppercase text-xs text-slate-50 tracking-wide font-bold hover:bg-cyan-500 active:text-slate-300"
     >
       {children}
