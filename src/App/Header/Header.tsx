@@ -3,7 +3,7 @@ import { getAuth } from "firebase/auth";
 import { useState } from "react";
 import logo from "assets/icons/logo.svg";
 import UserMenu from "./UserMenu";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { routes } from "constants/routes";
 
 export default function Header() {
@@ -19,13 +19,20 @@ export default function Header() {
 
   return (
     <div className="bg-cyan-900 p-4 flex items-center shadow-lg">
-      <Link to={routes.index}>
+      <NavLink
+        to={routes.index}
+        className={({ isActive }) =>
+          `${
+            isActive ? "pointer-events-none ring-4 ring-slate-50/30" : ""
+          } w-10 h-10 rounded-full mr-2 transform hover:scale-110 transition active:rotate-45`
+        }
+      >
         <img
-          className="object-contain w-10 h-10 rounded-full mr-2 object-center shadow-md shadow-cyan-800"
+          className="object-contain w-full h-full object-center "
           src={logo}
           alt=""
         />
-      </Link>
+      </NavLink>
 
       {user && <UserMenu />}
 

@@ -31,10 +31,10 @@ export default function Auth() {
       <div className="w-full max-w-sm justify-self-center self-start mt-8 grid content-start gap-4">
         <p className="text-slate-500 font-bold uppercase">Connect with</p>
         <button
-          className="flex items-center gap-2 bg-cyan-800 shadow-sm 
-          shadow-cyan-800 text-slate-50 py-2 px-4 rounded-md 
-          transition transform hover:scale-110 active:translate-x-2 
-          hover:bg-cyan-700 hover:shadow-xl hover:shadow-cyan-300/20 font-bold"
+          className="flex items-center gap-2 bg-cyan-800 shadow-md 
+          shadow-cyan-800/30 text-slate-50 py-2 px-4 rounded-md 
+          transition transform hover:scale-105 
+          hover:shadow-xl hover:shadow-cyan-300/20 active:translate-x-2  font-bold"
           onClick={signIn}
         >
           <Icon type={iconTypes.fb_square} size={20} />

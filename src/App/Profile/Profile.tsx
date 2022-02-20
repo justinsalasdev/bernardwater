@@ -1,35 +1,57 @@
+import React, { useState } from "react";
+import TextInput from "./TextInput";
+
 export default function Profile() {
+  const [isEditing, setEditing] = useState(false);
+
+  async function startEdit() {
+    //delay 10s so click won't trigger submit on change of button type
+    await new Promise((r) => setTimeout(r, 100));
+    setEditing(true);
+  }
+
   return (
-    <form className="justify-self-center self-start mt-8 w-full max-w-md rounded-md">
-      <p className="font-bold text-lg text-slate-600 mb-4 uppercase ">
-        Contact details
-      </p>
-      <TextInput title="Name" />
-      <TextInput title="Phone number" />
-      <TextInput title="Address" />
-      <TextInput title="Others" />
-      <button
-        type="button"
-        className="bg-cyan-600 w-full p-4 rounded-full   mt-4 shadow-md shadow-cyan-500/30
-       uppercase font-bold text-slate-50 hover:bg-cyan-500 hover:shadow-xl hover:shadow-cyan-400/30
-       transform active:translate-x-1 transition"
-      >
-        save
-      </button>
+    <form
+      className="justify-self-center self-start mt-8 w-full max-w-md rounded-md grid"
+      onSubmit={(e: any) => {
+        e.preventDefault();
+        console.log("hello world");
+      }}
+    >
+      {(isEditing && <ProfileAction type="submit">save</ProfileAction>) || (
+        <ProfileAction type="button" onClick={startEdit}>
+          edit profile
+        </ProfileAction>
+      )}
+      <TextInput
+        title="Full name"
+        placeholder="Juan Dela Cruz"
+        isEditing={isEditing}
+      />
+      <TextInput
+        title="Mobile number"
+        placeholder="09982223429"
+        isEditing={isEditing}
+      />
+      <TextInput
+        title="Address"
+        placeholder="Lot 261 Block 9 Subdivision, San Rafael, Rizal"
+        isEditing={isEditing}
+      />
+      {/* <TextInput title="Others" placeholder="others" /> */}
     </form>
   );
 }
 
-function TextInput(props: { title: string }) {
+function ProfileAction(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  const { className, children, ...restProps } = props;
   return (
-    <div className="mb-4">
-      <label className="uppercase text-xs font-bold text-slate-600">
-        {props.title}
-      </label>
-      <input
-        type="text"
-        className="mt-1 w-full bg-slate-50 text-slate-700 shadow-inner p-4 rounded-md focus:outline-none"
-      />
-    </div>
+    <button
+      {...restProps}
+      className="bg-cyan-600 justify-self-end px-4 py-1 rounded-full 
+        uppercase text-xs text-slate-50 tracking-wide font-bold hover:bg-cyan-500 active:text-slate-300"
+    >
+      {children}
+    </button>
   );
 }
