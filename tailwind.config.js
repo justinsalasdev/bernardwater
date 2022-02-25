@@ -6,6 +6,10 @@ module.exports = {
         a1a: "auto 1fr auto",
         a1: "auto 1fr",
       },
+
+      gridTemplateColumns: {
+        a1: "auto 1fr",
+      },
     },
   },
   plugins: [],
