@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { updateUser } from "services/auth/auth";
 import { useSetter } from "store/accessors";
 import { getAuth } from "firebase/auth";
+import { setProfileLoading, updateProfile } from "services/profile/profile";
 import {
   doc,
   getFirestore,
@@ -10,8 +11,7 @@ import {
   Unsubscribe as FireStoreUnsubscribe,
 } from "firebase/firestore";
 import { tables } from "constants/tables";
-import { profileConverter } from "./Profile/schema";
-import { setProfileLoading, updateProfile } from "services/profile/profile";
+import { profileConverter } from "types/coverters";
 export default function useInitApp() {
   const [loading, setLoading] = useState(true);
   const profileSubscribeRef = useRef<FireStoreUnsubscribe>();
@@ -64,6 +64,8 @@ export default function useInitApp() {
         profileSubscribeRef.current = unsubscribe;
       }
     });
+
+    //get products, but don't subscribe since product info doesn't change often
 
     setLoading(false);
     return () => {

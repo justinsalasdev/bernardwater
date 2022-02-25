@@ -2,8 +2,9 @@ import { useFormContext } from "react-hook-form";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { tables } from "constants/tables";
 import { useGetter } from "store/accessors";
-import { Profile, profileConverter } from "../schema";
 import { useState } from "react";
+import { Profile } from "types/types";
+import { profileConverter } from "types/coverters";
 
 export default function useUpdateProfile() {
   const user = useGetter((state) => state.auth.user);

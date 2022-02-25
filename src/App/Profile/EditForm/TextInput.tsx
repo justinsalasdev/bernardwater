@@ -1,6 +1,6 @@
 import { ErrorMessage } from "@hookform/error-message";
 import { useFormContext } from "react-hook-form";
-import { Profile } from "../schema";
+import { Profile } from "types/types";
 
 export default function TextInput(props: {
   id: keyof Profile;

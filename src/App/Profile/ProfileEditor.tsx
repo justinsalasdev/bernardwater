@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Profile, schema } from "./schema";
+import { schema } from "./schema";
+import { Profile } from "types/types";
 
 export default function ProfileEditor(
   props: Partial<Profile> & { children: ReactNode }

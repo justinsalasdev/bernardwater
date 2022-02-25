@@ -1,4 +1,4 @@
-import { Profile as _Profile } from "./schema";
+import { Profile as _Profile } from "types/types";
 import { useGetter } from "store/accessors";
 import ProfileEditor from "./ProfileEditor";
 import EditForm from "./EditForm/EditForm";

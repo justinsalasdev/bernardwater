@@ -1,12 +1,5 @@
-import { FirestoreDataConverter } from "firebase/firestore";
-import { PartialRecord } from "types/types";
+import { PartialRecord, Profile } from "types/types";
 import * as yup from "yup";
-
-export type Profile = {
-  fullName: string;
-  address: string;
-  mobileNumber: string;
-};
 
 const phMobileNumberRegex = /^(09|\+639)\d{9}$/;
 const profileObject: PartialRecord<keyof Profile, yup.AnySchema> = {
@@ -18,8 +11,3 @@ const profileObject: PartialRecord<keyof Profile, yup.AnySchema> = {
 };
 
 export const schema = yup.object(profileObject);
-
-export const profileConverter: FirestoreDataConverter<Profile> = {
-  toFirestore: (profile) => profile,
-  fromFirestore: (snapshot, options) => snapshot.data(options) as Profile,
-};
