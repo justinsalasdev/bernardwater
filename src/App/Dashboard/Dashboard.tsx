@@ -1,4 +1,5 @@
-import { useState } from "react";
+import Icon, { iconTypes } from "components/Icon";
+import React, { useState } from "react";
 import img from "../../assets/water-rounded.png";
 
 export default function Dashboard() {
@@ -14,7 +15,6 @@ export default function Dashboard() {
   //   setQuantity(e.target.value);
   // };
 
-  const price = 30;
   return (
     <div className="bg-slate-50 grid content-start">
       <div
@@ -28,26 +28,31 @@ export default function Dashboard() {
           </p>
         </div>
 
-        <div className="grid grid-rows-a1a gap-10 justify-items-center aspect-square">
-          <button
-            className="text-2xl font-bold aspect-square w-16 shadow-outer-slate50 bg-slate-150 rounded-full"
-            onClick={incrementQuantity}
-          >
-            +
-          </button>
+        <div className="grid content-center place-items-center gap-4">
+          <Indcrementor>
+            <Icon type={iconTypes.plus} size={20} />
+          </Indcrementor>
           <input
-            className="focus:outline-none text-xl font-bold text-center text-slate-700 bg-slate-50 rounded-md shadow-inner-slate50"
+            className="focus:outline-none text-xl font-bold text-center text-slate-700 bg-slate-50 rounded-md shadow-inner-slate50 p-3"
             type="text"
             value={quantity}
           />
-          <button
-            className="text-2xl font-bold aspect-square w-16 shadow-outer-slate50 rounded-full"
-            onClick={incrementQuantity}
-          >
-            -
-          </button>
+          <Indcrementor>
+            <Icon type={iconTypes.minus} size={20} />
+          </Indcrementor>
         </div>
       </div>
     </div>
+  );
+}
+
+function Indcrementor(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      className="font-extrabold text-slate-600 bg-slate-200 w-10 aspect-square grid place-items-center shadow-outer-slate50 rounded-md active:shadow-inner-slate50 active:bg-slate-100"
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
   );
 }

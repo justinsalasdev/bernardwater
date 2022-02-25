@@ -1,6 +1,10 @@
 import { IconBaseProps, IconType } from "react-icons";
 import { FaFacebookSquare } from "react-icons/fa";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import {
+  AiOutlineLoading3Quarters,
+  AiOutlinePlus,
+  AiOutlineMinus,
+} from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 
 export default function Icon(props: IconBaseProps & { type: iconTypes }) {
@@ -13,10 +17,14 @@ export enum iconTypes {
   fb = "FaFacebookSquare",
   loading = "AiOutlineLoading3Quarters",
   close = "GrClose",
+  plus = "AiOutlinePlus",
+  minus = "AiOutlineMinus",
 }
 
 export const icons: { [key in iconTypes]: IconType } = {
   [iconTypes.fb]: FaFacebookSquare,
   [iconTypes.loading]: AiOutlineLoading3Quarters,
   [iconTypes.close]: IoMdClose,
+  [iconTypes.plus]: AiOutlinePlus,
+  [iconTypes.minus]: AiOutlineMinus,
 };

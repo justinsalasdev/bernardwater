@@ -1,9 +1,6 @@
 import { FirestoreDataConverter } from "firebase/firestore";
+import { PartialRecord } from "types/types";
 import * as yup from "yup";
-
-type PartialRecord<K extends keyof any, T> = {
-  [P in K]?: T;
-};
 
 export type Profile = {
   fullName: string;
