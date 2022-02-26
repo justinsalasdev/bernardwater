@@ -17,7 +17,7 @@ export default function App() {
     return <Loader classes="text-cyan-500 place-self-center" />;
   } else {
     return (
-      <div className="grid grid-rows-a1a relative">
+      <div className="grid grid-rows-a1a relative bg-slate-50">
         <Modal classes="fixed top-0 bottom-0 right-0 left-0 bg-slate-800/50 grid place-items-center">
           <Header />
           <Routes>

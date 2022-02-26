@@ -28,19 +28,15 @@ export default function TextInput(props: {
         readOnly={!props.isEditing}
         placeholder={props.placeholder}
         type="text"
-        className="mt-1 w-full bg-slate-50/30 shadow-inner border text-slate-700 p-4 rounded-md
-         placeholder:text-slate-300 
-         disabled:bg-slate-100/70
-         focus:outline-none focus:ring-2 focus:ring-cyan-700/20
-         read-only:pointer-events-none read-only:shadow-none
-         read-only:bg-white read-only:border-t-transparent read-only:border-x-transparent 
-         read-only:rounded-none read-only:placeholder:invisible"
+        className="mt-1 w-full text-slate-800 bg-slate-100 shadow-inner-slate50 p-3 rounded-md
+        focus:outline-none
+        read-only:shadow-none"
       />
       <ErrorMessage
         as="p"
         errors={errors}
         name={props.id}
-        className="text-rose-300 text-xs font-mono text-right mt-1 pr-1"
+        className="text-rose-300 font-bold text-xs font-mono text-right mt-1 pr-1"
       />
     </div>
   );

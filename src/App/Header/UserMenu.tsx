@@ -11,7 +11,7 @@ export default function UserMenu() {
           to={route}
           key={route}
           className={({ isActive }) =>
-            `text-slate-50 uppercase font-semibold text-sm hover:text-cyan-200 py-2 px-4 rounded-md ${
+            `text-slate-50 uppercase font-semibold text-sm hover:text-cyan-200 p-2 rounded-md ${
               isActive
                 ? "bg-cyan-50 bg-opacity-10 shadow-inner pointer-events-none"
                 : ""

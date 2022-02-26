@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .container-padded {
+    @apply xl:container xl:mx-auto xl:px-0 px-5;
+  }
+}
+
 @layer utilities {
   .shadow-outer-slate50 {
-    box-shadow: -5px 5px 4px #e4e6e8, 5px -5px 4px #ffffff;
+    box-shadow: -2px 2px 2px #e4e6e8, 2px -2px 2px #ffffff;
   }
   .shadow-inner-slate50 {
-    box-shadow: inset -5px 5px 4px #e4e6e8, inset 5px -5px 4px #ffffff;
+    box-shadow: inset -2px 2px 2px #e4e6e8, inset 2px -2px 2px #ffffff;
   }
 }

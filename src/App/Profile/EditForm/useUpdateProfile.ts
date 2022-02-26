@@ -4,7 +4,7 @@ import { tables } from "constants/tables";
 import { useGetter } from "store/accessors";
 import { useState } from "react";
 import { Profile } from "types/types";
-import { profileConverter } from "types/coverters";
+import createConverter from "helpers/createConverter";
 
 export default function useUpdateProfile() {
   const user = useGetter((state) => state.auth.user);
@@ -22,7 +22,7 @@ export default function useUpdateProfile() {
     try {
       const db = getFirestore();
       const ref = doc(db, tables.users, user?.uid!).withConverter(
-        profileConverter
+        createConverter<Profile>()
       );
       await setDoc(ref, data, { merge: true });
       setEditing(false);

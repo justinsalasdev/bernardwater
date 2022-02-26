@@ -25,7 +25,7 @@ export default function Profile() {
   );
 
   return (
-    <div className="grid content-start justify-items-center pt-8">
+    <div className="bg-slate-50 container-padded grid content-start justify-items-center pt-8">
       {profileContent}
     </div>
   );

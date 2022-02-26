@@ -11,7 +11,8 @@ import {
   Unsubscribe as FireStoreUnsubscribe,
 } from "firebase/firestore";
 import { tables } from "constants/tables";
-import { profileConverter } from "types/coverters";
+import { Profile } from "types/types";
+import createConverter from "helpers/createConverter";
 export default function useInitApp() {
   const [loading, setLoading] = useState(true);
   const profileSubscribeRef = useRef<FireStoreUnsubscribe>();
@@ -50,7 +51,7 @@ export default function useInitApp() {
         //subscribe to profile change
         const db = getFirestore();
         const docRef = doc(db, tables.users, user.uid).withConverter(
-          profileConverter
+          createConverter<Profile>()
         );
         const unsubscribe = onSnapshot(docRef, (doc) => {
           if (doc.exists()) {
