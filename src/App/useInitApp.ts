@@ -6,16 +6,20 @@ import { getAuth } from "firebase/auth";
 import { setProfileLoading, updateProfile } from "services/profile/profile";
 import {
   doc,
+  getDocs,
   getFirestore,
   onSnapshot,
   Unsubscribe as FireStoreUnsubscribe,
+  collection,
 } from "firebase/firestore";
 import { tables } from "constants/tables";
-import { Profile } from "types/types";
+import { Product, Profile } from "types/types";
 import createConverter from "helpers/createConverter";
+import { updateProducts } from "services/products/products";
 export default function useInitApp() {
   const [loading, setLoading] = useState(true);
   const profileSubscribeRef = useRef<FireStoreUnsubscribe>();
+  const authSubscribeRef = useRef<FireStoreUnsubscribe>();
   const dispatch = useSetter();
 
   useEffect(() => {
@@ -35,7 +39,7 @@ export default function useInitApp() {
       dispatch(updateUser({ photoURL, displayName, phoneNumber, uid }));
     }
     //subscribe auth
-    const unsubscribeAuth = auth.onAuthStateChanged((user) => {
+    const unsubscribeAuth = auth.onAuthStateChanged(async (user) => {
       if (!user) {
         dispatch(updateUser(null));
       } else {
@@ -50,10 +54,10 @@ export default function useInitApp() {
 
         //subscribe to profile change
         const db = getFirestore();
-        const docRef = doc(db, tables.users, user.uid).withConverter(
+        const profileDocRef = doc(db, tables.users, user.uid).withConverter(
           createConverter<Profile>()
         );
-        const unsubscribe = onSnapshot(docRef, (doc) => {
+        const unsubscribe = onSnapshot(profileDocRef, (doc) => {
           if (doc.exists()) {
             const data = doc.data();
             dispatch(setProfileLoading(true));
@@ -61,19 +65,30 @@ export default function useInitApp() {
             dispatch(setProfileLoading(false));
           }
         });
-
         profileSubscribeRef.current = unsubscribe;
+
+        //get products, but don't subscribe since product info doesn't change often
+        const productsCollectionRef = collection(
+          db,
+          tables.products
+        ).withConverter(createConverter<Product>());
+
+        const querySnapshot = await getDocs(productsCollectionRef);
+        const products: Product[] = [];
+        querySnapshot.forEach((doc) => {
+          products.push(doc.data());
+        });
+
+        dispatch(updateProducts(products));
       }
     });
 
-    //get products, but don't subscribe since product info doesn't change often
-
+    authSubscribeRef.current = unsubscribeAuth;
     setLoading(false);
+
     return () => {
-      unsubscribeAuth();
-      if (profileSubscribeRef.current) {
-        profileSubscribeRef.current();
-      }
+      profileSubscribeRef.current && profileSubscribeRef.current();
+      authSubscribeRef.current && authSubscribeRef.current();
     };
   }, []);
 

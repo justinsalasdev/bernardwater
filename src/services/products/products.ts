@@ -2,16 +2,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "types/types";
 
 const initialState: Product[] = [];
-export const auth = createSlice({
-  name: "auth",
+export const products = createSlice({
+  name: "products",
   initialState,
   reducers: {
-    updateProducts: (state, { payload }: PayloadAction<Product[]>) => {
-      state = payload;
-    },
+    updateProducts: (_, { payload }: PayloadAction<Product[]>) => payload,
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateProducts } = auth.actions;
-export default auth;
+export const { updateProducts } = products.actions;
+export default products;

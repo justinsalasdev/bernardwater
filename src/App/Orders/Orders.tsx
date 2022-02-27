@@ -1,9 +1,11 @@
 import { useSetModal } from "components/Modal/Modal";
 import Popup, { PopupProps } from "components/Popup/Popup";
+import { useGetter } from "store/accessors";
 
 export default function Orders() {
   const { showModal } = useSetModal();
-
+  const products = useGetter((state) => state.products);
+  console.log(products);
   return (
     <p>
       Orders{" "}

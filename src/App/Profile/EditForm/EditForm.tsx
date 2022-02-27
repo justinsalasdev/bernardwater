@@ -20,7 +20,7 @@ export default function EditForm() {
         </ProfileAction>
       )) || (
         <ProfileAction type="button" onClick={startEdit}>
-          edit profile
+          edit
         </ProfileAction>
       )}
       <TextInput
@@ -51,8 +51,9 @@ function ProfileAction(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       {...restProps}
-      className="bg-cyan-600 disabled:bg-slate-400 justify-self-end px-4 py-1 rounded-sm 
-        uppercase text-xs text-slate-50 tracking-wide font-bold hover:bg-cyan-500 active:text-slate-300"
+      className="justify-self-end text-xs uppercase p-2 font-bold text-slate-600 bg-slate-100 
+      shadow-outer-slate50 rounded-md active:shadow-inner-slate50 cursor-pointer 
+      disabled:text-slate-300"
     >
       {children}
     </button>

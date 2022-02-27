@@ -28,13 +28,10 @@ export default function Auth() {
     return <Navigate to={routes.index} />;
   } else {
     return (
-      <div className="w-full max-w-sm justify-self-center self-start mt-8 grid content-start gap-4">
-        <p className="text-slate-500 font-bold uppercase">Connect with</p>
+      <div className="grid container-padded content-start">
+        <p className="text-slate-500 font-bold uppercase my-2">Connect with</p>
         <button
-          className="flex items-center gap-2 bg-cyan-800 shadow-md 
-          shadow-cyan-800/30 text-slate-50 py-2 px-4 rounded-md 
-          transition transform hover:scale-105 
-          hover:shadow-xl hover:shadow-cyan-300/20 active:translate-x-2  font-bold"
+          className="flex items-center gap-2 text-slate-600 bg-slate-100 shadow-outer-slate50 p-3 rounded-md active:shadow-inner-slate50"
           onClick={signIn}
         >
           <Icon type={iconTypes.fb} size={20} />

@@ -24,7 +24,7 @@ export default function Header() {
         className={({ isActive }) =>
           `${
             isActive ? "pointer-events-none ring-4 ring-slate-50/30" : ""
-          } w-10 h-10 rounded-full mr-2 transform hover:scale-110 transition active:rotate-45`
+          } w-8 h-8 rounded-full mr-2 transform hover:scale-110 transition active:rotate-45`
         }
       >
         <img
@@ -40,7 +40,7 @@ export default function Header() {
         <button
           onClick={handleSignOut}
           disabled={isLoggingOut}
-          className="cursor-pointer ml-auto uppercase text-sm font-bold text-slate-50 hover:text-cyan-200 disabled:text-slate-500"
+          className="cursor-pointer ml-2 uppercase text-sm font-bold text-slate-50 hover:text-cyan-200 disabled:text-slate-500"
         >
           logout
         </button>

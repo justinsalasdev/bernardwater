@@ -10,9 +10,11 @@ import Orders from "./Orders/Orders";
 import RouteGuard from "components/RouteGuard";
 import Loader from "components/Loader";
 import Modal from "components/Modal/Modal";
+import { useGetter } from "store/accessors";
 
 export default function App() {
   const { isAppLoading } = useInitApp();
+  const products = useGetter((state) => state.products);
   if (isAppLoading) {
     return <Loader classes="text-cyan-500 place-self-center" />;
   } else {

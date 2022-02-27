@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { auth } from "services/auth/auth";
 import profile from "services/profile/profile";
+import products from "services/products/products";
 // ...
 
 export const store = configureStore({
   reducer: {
     [auth.name]: auth.reducer,
     [profile.name]: profile.reducer,
+    [products.name]: products.reducer,
   },
 });
 
