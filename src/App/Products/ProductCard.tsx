@@ -1,7 +1,7 @@
 import Icon, { iconTypes } from "components/Icon";
 import { useSetModal } from "components/Modal/Modal";
 import Popup, { PopupProps } from "components/Popup/Popup";
-import UpdateAmount from "components/Popup/UpdateAmount";
+import TweakOrder from "components/Popup/TweakOrder";
 import UpdateProfileNotice from "components/Popup/UpdateProfileNotice";
 import { useGetter } from "store/accessors";
 import { Product } from "types/types";
@@ -22,7 +22,7 @@ export default function ProductCard(props: Product) {
     } else {
       setModalContent<PopupProps<Product>>(Popup, {
         accent: "bg-cyan-600",
-        Content: UpdateAmount,
+        Content: TweakOrder,
         contentProps: props,
       });
     }
