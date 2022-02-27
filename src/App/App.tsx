@@ -1,20 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import { routes } from "constants/routes";
+import RouteGuard from "components/RouteGuard";
+import Loader from "components/Loader";
+import Modal from "components/Modal/Modal";
 import Dashboard from "./Dashboard/Dashboard";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Auth from "./Auth/Auth";
-import useInitApp from "./useInitApp";
 import Profile from "./Profile/Profile";
-import Orders from "./Orders/Orders";
-import RouteGuard from "components/RouteGuard";
-import Loader from "components/Loader";
-import Modal from "components/Modal/Modal";
-import { useGetter } from "store/accessors";
+import Products from "./Products/Products";
+
+import useInitApp from "./useInitApp";
 
 export default function App() {
   const { isAppLoading } = useInitApp();
-  const products = useGetter((state) => state.products);
   if (isAppLoading) {
     return <Loader classes="text-cyan-500 place-self-center" />;
   } else {
@@ -30,8 +29,8 @@ export default function App() {
               element={<RouteGuard Component={Profile} />}
             />
             <Route
-              path={routes.orders}
-              element={<RouteGuard Component={Orders} />}
+              path={routes.products}
+              element={<RouteGuard Component={Products} />}
             />
           </Routes>
           <Footer />

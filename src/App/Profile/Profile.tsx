@@ -3,6 +3,7 @@ import { useGetter } from "store/accessors";
 import ProfileEditor from "./ProfileEditor";
 import EditForm from "./EditForm/EditForm";
 import Loader from "components/Loader";
+import Icon, { iconTypes } from "components/Icon";
 
 export default function Profile() {
   const {
@@ -25,7 +26,11 @@ export default function Profile() {
   );
 
   return (
-    <div className="bg-slate-50 container-padded grid content-start justify-items-center pt-8">
+    <div className="container-padded grid content-start pt-8 justify-items-center">
+      <div className="justify-self-start flex items-center gap-2 text-xs uppercase text-slate-700">
+        <Icon type={iconTypes.motor} size={20} />
+        <span>your delivery information</span>
+      </div>
       {profileContent}
     </div>
   );

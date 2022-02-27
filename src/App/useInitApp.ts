@@ -71,12 +71,12 @@ export default function useInitApp() {
         const productsCollectionRef = collection(
           db,
           tables.products
-        ).withConverter(createConverter<Product>());
+        ).withConverter(createConverter<Omit<Product, "id">>());
 
         const querySnapshot = await getDocs(productsCollectionRef);
         const products: Product[] = [];
         querySnapshot.forEach((doc) => {
-          products.push(doc.data());
+          products.push({ id: doc.id, ...doc.data() });
         });
 
         dispatch(updateProducts(products));

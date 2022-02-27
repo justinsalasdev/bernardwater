@@ -5,6 +5,9 @@ import { NavLink } from "react-router-dom";
 export default function UserMenu() {
   return (
     <nav className="flex ml-auto">
+      <NavLink to={routes.products} className={genClassName}>
+        <Icon type={iconTypes.grid} />
+      </NavLink>
       <NavLink to={routes.profile} className={genClassName}>
         <Icon type={iconTypes.user} />
       </NavLink>

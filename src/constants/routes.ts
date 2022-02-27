@@ -1,5 +1,5 @@
 export enum routes {
-  orders = "orders",
+  products = "products",
   profile = "profile",
   auth = "auth",
   index = "/",
