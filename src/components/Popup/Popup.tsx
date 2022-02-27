@@ -10,11 +10,13 @@ export type PopupProps<T = {}> = {
   accent?: string;
 };
 
-export default function Popup({
+export default function Popup<T = {}>({
   maxWidth = "max-w-sm",
   accent = "bg-cyan-700",
+  Content,
+  contentProps,
   ...props
-}: PopupProps) {
+}: PopupProps<T>) {
   const { resetModalContent } = useSetModal();
 
   function closePopup() {
@@ -26,7 +28,7 @@ export default function Popup({
 
   return (
     <div
-      className={`grid grid-rows-a1 w-full ${maxWidth} bg-slate-50 rounded-md overflow-hidden shadow-lg shadow-slate-800/10 min-h-52`}
+      className={`bg-slate-50 grid grid-rows-a1 w-full ${maxWidth} bg-slate-50 rounded-md overflow-hidden shadow-lg shadow-slate-800/10 min-h-52`}
     >
       <div className={`${accent} p-2 flex items-center justify-end`}>
         <button
@@ -36,7 +38,7 @@ export default function Popup({
           <Icon type={iconTypes.close} className="text-slate-50" size={22} />
         </button>
       </div>
-      <props.Content {...props.contentProps} />
+      <Content {...contentProps} />
     </div>
   );
 }

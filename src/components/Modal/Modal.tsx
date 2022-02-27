@@ -22,11 +22,7 @@ export default function Modal(props: Props) {
         resetModalContent,
       }}
     >
-      {!!Content && (
-        <>
-          <div className={props.classes}>{Content}</div>
-        </>
-      )}
+      {!!Content && <div className={props.classes}>{Content}</div>}
 
       {props.children}
     </setContext.Provider>

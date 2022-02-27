@@ -1,6 +1,7 @@
 import Icon, { iconTypes } from "components/Icon";
 import { useSetModal } from "components/Modal/Modal";
 import Popup, { PopupProps } from "components/Popup/Popup";
+import UpdateAmount from "components/Popup/UpdateAmount";
 import UpdateProfileNotice from "components/Popup/UpdateProfileNotice";
 import { useGetter } from "store/accessors";
 import { Product } from "types/types";
@@ -12,15 +13,19 @@ export default function ProductCard(props: Product) {
   function handleBuy() {
     //if no profile in db
     if (!profile) {
-      alert("please provide your delivery information");
+      setModalContent<PopupProps>(Popup, {
+        accent: "bg-rose-500",
+        Content: UpdateProfileNotice,
+        contentProps: {},
+      });
       return;
+    } else {
+      setModalContent<PopupProps<Product>>(Popup, {
+        accent: "bg-cyan-600",
+        Content: UpdateAmount,
+        contentProps: props,
+      });
     }
-
-    setModalContent<PopupProps>(Popup, {
-      accent: "bg-rose-500",
-      Content: UpdateProfileNotice,
-      contentProps: {},
-    });
   }
 
   return (

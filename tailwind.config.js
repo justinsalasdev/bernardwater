@@ -12,6 +12,7 @@ module.exports = {
 
       gridTemplateColumns: {
         a1: "auto 1fr",
+        a1a: "auto 1fr auto",
       },
       minHeight: {
         //from h-52
