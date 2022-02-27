@@ -5,8 +5,10 @@ import UserMenu from "./UserMenu";
 import { NavLink } from "react-router-dom";
 import { routes } from "constants/routes";
 import { getAuth } from "firebase/auth";
+import useCloseModalOnRouteChange from "./useCloseModalOnRouteChange";
 
 export default function Header() {
+  useCloseModalOnRouteChange();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
   const user = useGetter((state) => state.auth.user);
 

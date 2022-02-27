@@ -63,6 +63,9 @@ export default function useInitApp() {
             dispatch(setProfileLoading(true));
             dispatch(updateProfile(data));
             dispatch(setProfileLoading(false));
+          } else {
+            dispatch(updateProfile(null));
+            dispatch(setProfileLoading(false));
           }
         });
         profileSubscribeRef.current = unsubscribe;
@@ -90,6 +93,7 @@ export default function useInitApp() {
       profileSubscribeRef.current && profileSubscribeRef.current();
       authSubscribeRef.current && authSubscribeRef.current();
     };
+    //eslint-disable-next-line
   }, []);
 
   return { isAppLoading: loading };

@@ -19,7 +19,7 @@ export default function App() {
   } else {
     return (
       <div className="grid grid-rows-a1a relative bg-slate-50">
-        <Modal classes="fixed top-0 bottom-0 right-0 left-0 bg-slate-800/50 grid place-items-center">
+        <Modal classes="fixed top-0 bottom-0 right-0 left-0 bg-slate-800/50 grid place-items-center px-4">
           <Header />
           <Routes>
             <Route index element={<RouteGuard Component={Dashboard} />} />

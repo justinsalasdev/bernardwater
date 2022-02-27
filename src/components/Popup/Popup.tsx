@@ -1,7 +1,10 @@
 import Icon, { iconTypes } from "components/Icon";
 import { useSetModal } from "components/Modal/Modal";
+import { FC } from "react";
 
-export type PopupProps = {
+export type PopupProps<T = {}> = {
+  Content: FC<T>;
+  contentProps: T;
   beforeCloseHandler?: () => void;
   maxWidth?: string;
   accent?: string;
@@ -12,18 +15,18 @@ export default function Popup({
   accent = "bg-cyan-700",
   ...props
 }: PopupProps) {
-  const { hideModal } = useSetModal();
+  const { resetModalContent } = useSetModal();
 
   function closePopup() {
     if (typeof props.beforeCloseHandler === "function") {
       props.beforeCloseHandler();
     }
-    hideModal();
+    resetModalContent();
   }
 
   return (
     <div
-      className={`grid grid-rows-a1 w-full ${maxWidth} bg-slate-50 rounded-md overflow-hidden shadow-lg shadow-slate-800/10 h-52`}
+      className={`grid grid-rows-a1 w-full ${maxWidth} bg-slate-50 rounded-md overflow-hidden shadow-lg shadow-slate-800/10 min-h-52`}
     >
       <div className={`${accent} p-2 flex items-center justify-end`}>
         <button
@@ -33,7 +36,7 @@ export default function Popup({
           <Icon type={iconTypes.close} className="text-slate-50" size={22} />
         </button>
       </div>
-      <p className="place-self-center">sample</p>
+      <props.Content {...props.contentProps} />
     </div>
   );
 }

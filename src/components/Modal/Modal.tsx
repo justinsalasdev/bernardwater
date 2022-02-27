@@ -4,19 +4,22 @@ import { Handlers, Opener, Props } from "./types";
 export default function Modal(props: Props) {
   const [Content, setContent] = useState<ReactNode>();
 
-  const showModal: Opener = (Content, props) => {
+  const setModalContent: Opener = (Content, props) => {
     setContent(<Content {...props} />);
   };
 
-  function closeModal() {
+  function resetModalContent() {
+    if (Content === undefined) {
+      return;
+    }
     setContent(undefined);
   }
 
   return (
     <setContext.Provider
       value={{
-        showModal,
-        hideModal: closeModal,
+        setModalContent,
+        resetModalContent,
       }}
     >
       {!!Content && (
@@ -30,8 +33,8 @@ export default function Modal(props: Props) {
   );
 }
 const setContext = createContext<Handlers>({
-  showModal: () => {},
-  hideModal: () => {},
+  setModalContent: () => {},
+  resetModalContent: () => {},
 });
 
 export const useSetModal = () => useContext(setContext);

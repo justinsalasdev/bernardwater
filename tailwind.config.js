@@ -13,6 +13,10 @@ module.exports = {
       gridTemplateColumns: {
         a1: "auto 1fr",
       },
+      minHeight: {
+        //from h-52
+        52: "13rem",
+      },
     },
   },
   plugins: [],
