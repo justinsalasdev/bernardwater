@@ -11,6 +11,7 @@ import Profile from "./Profile/Profile";
 import Products from "./Products/Products";
 
 import useInitApp from "./useInitApp";
+import Confirm from "./Confirm/Confirm";
 
 export default function App() {
   const { isAppLoading } = useInitApp();
@@ -27,6 +28,10 @@ export default function App() {
             <Route
               path={routes.profile}
               element={<RouteGuard Component={Profile} />}
+            />
+            <Route
+              path={routes.confirm}
+              element={<RouteGuard Component={Confirm} />}
             />
             <Route
               path={routes.products}
