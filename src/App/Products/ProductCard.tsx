@@ -49,7 +49,7 @@ export default function ProductCard(props: Product) {
       <img src={props.image} className="w-full h-52 object-contain" alt="" />
 
       <Link
-        to={`./${routes.confirm}/${props.id}`}
+        to={`/${routes.confirm}/${props.id}`}
         state={props}
         className="bg-slate-100 text-cyan-700 uppercase text-xs font-extrabold 
         text-center cursor-pointer shadow-outer-slate50 p-2 m-1 rounded-sm active:shadow-inner-slate50"

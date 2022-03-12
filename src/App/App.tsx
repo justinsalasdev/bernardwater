@@ -30,7 +30,7 @@ export default function App() {
               element={<RouteGuard Component={Profile} />}
             />
             <Route
-              path={routes.confirm}
+              path={`${routes.confirm}/:id`}
               element={<RouteGuard Component={Confirm} />}
             />
             <Route
