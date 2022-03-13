@@ -11,7 +11,7 @@ import Profile from "./Profile/Profile";
 import Products from "./Products/Products";
 
 import useInitApp from "./useInitApp";
-import Confirm from "./Confirm/Confirm";
+import Confirmer from "./Confirmer/Confirmer";
 
 export default function App() {
   const { isAppLoading } = useInitApp();
@@ -31,7 +31,7 @@ export default function App() {
             />
             <Route
               path={`${routes.confirm}/:id`}
-              element={<RouteGuard Component={Confirm} />}
+              element={<RouteGuard Component={Confirmer} />}
             />
             <Route
               path={routes.products}

@@ -19,7 +19,8 @@ export default function TextInput(props: {
         className="uppercase text-xs font-bold text-slate-500"
         htmlFor={`__${props.id}`}
       >
-        {props.title}
+        {props.title}{" "}
+        {props.isEditing && <span className="text-rose-600">*</span>}
       </label>
       <input
         id={`__${props.id}`}
