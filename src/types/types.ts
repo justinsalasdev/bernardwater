@@ -22,6 +22,7 @@ export type Product = {
   name: string;
   type: "mineral" | "distilled";
   price: number;
+  containerPrice: number;
   volume: number;
   image: string;
 };

@@ -1,5 +1,6 @@
 import Icon, { iconTypes } from "components/Icon";
 import { useSetModal } from "components/Modal/Modal";
+import Php from "components/Php";
 import Popup, { PopupProps } from "components/Popup/Popup";
 import TweakOrder from "components/Popup/TweakOrder";
 import UpdateProfileNotice from "components/Popup/UpdateProfileNotice";
@@ -33,7 +34,9 @@ export default function ProductCard(props: Product) {
   return (
     <div className="grid pt-4 w-48 shadow-outer-slate50 rounded-md overflow-hidden bg-slate-100">
       <div className="flex justify-between px-4">
-        <span className="text-slate-600">₱ {props.price.toFixed(2)}</span>
+        <span className="text-slate-600">
+          <Php /> {props.price.toFixed(2)}
+        </span>
         <p className="flex items-center text-slate-700">
           <span className="uppercase text-xs">
             <Icon

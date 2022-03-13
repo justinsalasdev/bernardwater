@@ -1,4 +1,5 @@
 import Icon, { iconTypes } from "components/Icon";
+import Php from "components/Php";
 import { Link } from "react-router-dom";
 import { Product } from "types/types";
 
@@ -12,7 +13,9 @@ export default function TweakOrder(props: Product) {
           className="w-36 object-contain row-span-4 mr-2 
           rounded-md shadow-outer-slate50 bg-slate-100"
         />
-        <p className="">₱ 15.00</p>
+        <p className="">
+          <Php /> 15.00
+        </p>
         <p className="flex items-center -ml-1">
           <span className="uppercase text-xs">
             <Icon

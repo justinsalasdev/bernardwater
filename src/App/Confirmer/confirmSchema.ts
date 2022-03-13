@@ -4,7 +4,7 @@ import Lazy from "yup/lib/Lazy";
 
 export type ConfirmValues = {
   quantity: string;
-  contentType: "mineral" | "distilled";
+  orderType: "refill" | "new";
 };
 
 const confirmShape: PartialRecord<

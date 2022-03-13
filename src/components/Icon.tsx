@@ -7,9 +7,10 @@ import {
 import { BiErrorCircle } from "react-icons/bi";
 import { BsArrowRight } from "react-icons/bs";
 import { FaFacebookSquare, FaUserCircle } from "react-icons/fa";
+import { GiWaterRecycling, GiWaterFlask } from "react-icons/gi";
 
 import { MdDeliveryDining } from "react-icons/md";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoIosArrowBack } from "react-icons/io";
 import { IoGridOutline, IoWater } from "react-icons/io5";
 
 export default function Icon(props: IconBaseProps & { type: iconTypes }) {
@@ -19,6 +20,7 @@ export default function Icon(props: IconBaseProps & { type: iconTypes }) {
 }
 
 export enum iconTypes {
+  arrowBack = "IoIosArrowBack",
   arrowRight = "BsArrowRight",
   fb = "FaFacebookSquare",
   loading = "AiOutlineLoading3Quarters",
@@ -28,11 +30,14 @@ export enum iconTypes {
   user = "FaUserCircle",
   motor = "MdDeliveryDining",
   grid = "IoGridOutline",
+  waterContainer = "GiWaterFlask",
   waterDrop = "IoWater",
+  waterRefill = "GiWaterRecycling",
   error = "BiErrorCircle",
 }
 
 export const icons: { [key in iconTypes]: IconType } = {
+  [iconTypes.arrowBack]: IoIosArrowBack,
   [iconTypes.arrowRight]: BsArrowRight,
   [iconTypes.close]: IoMdClose,
   [iconTypes.error]: BiErrorCircle,
@@ -43,5 +48,7 @@ export const icons: { [key in iconTypes]: IconType } = {
   [iconTypes.motor]: MdDeliveryDining,
   [iconTypes.plus]: AiOutlinePlus,
   [iconTypes.user]: FaUserCircle,
+  [iconTypes.waterContainer]: GiWaterFlask,
   [iconTypes.waterDrop]: IoWater,
+  [iconTypes.waterRefill]: GiWaterRecycling,
 };
