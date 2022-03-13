@@ -1,10 +1,7 @@
-import Icon, { iconTypes } from "components/Icon";
-import React, { useState, useEffect } from "react";
-import { useController, useFormContext } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useGetter } from "store/accessors";
-import * as Yup from "yup";
-import { ConfirmValues } from "./confirmSchema";
+import ContentOption from "./ContentOption";
+import QuantitySetter from "./QuantitySetter";
 
 export default function ConfirmForm() {
   const { id } = useParams<{ id: string }>();
@@ -20,61 +17,20 @@ export default function ConfirmForm() {
       />
 
       <div className="grid content-start">
-        <p className="text-xs uppercase mb-2">quantity</p>
+        <Label text="Quantity" classes="mb-1" />
         <QuantitySetter />
-        <p>content</p>
-        <div></div>
+        <Label text="Content" classes="mb-1 mt-4" />
+        <div className="grid grid-cols-2">
+          <ContentOption optionName="mineral" id="mineral" />
+          <ContentOption optionName="distilled" id="distilled" />
+        </div>
       </div>
     </div>
   );
 }
 
-function QuantitySetter() {
-  const { control, setValue } = useFormContext<ConfirmValues>();
-  const {
-    field: { onChange, onBlur, value, name, ref },
-    fieldState: { invalid },
-  } = useController<ConfirmValues>({ name: "quantity", control });
-
-  function increment() {
-    setValue("quantity", `${+value + 1}`);
-  }
-
-  function decrement() {
-    setValue("quantity", `${+value - 1}`);
-  }
-
+function Label(props: { text: string; classes?: string }) {
   return (
-    <div className="grid grid-cols-a1a  gap-1">
-      <Indcrementor onClick={decrement} disabled={invalid || +value - 1 <= 0}>
-        <Icon type={iconTypes.minus} />
-      </Indcrementor>
-      <input
-        className="focus:outline-none text-xl font-bold text-center text-slate-700 bg-slate-50 rounded-md shadow-inner-slate50 p-3 w-full"
-        type="text"
-        onChange={onChange} // send value to hook form
-        onBlur={onBlur} // notify when input is touched/blur
-        value={value} // input value
-        name={name} // send down the input name
-        ref={ref}
-      />
-      <Indcrementor onClick={increment} disabled={invalid}>
-        <Icon type={iconTypes.plus} />
-      </Indcrementor>
-    </div>
+    <p className={`text-xs uppercase ${props.classes || ""}`}>{props.text}</p>
   );
 }
-
-function Indcrementor(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  return (
-    <button
-      disabled={props.disabled}
-      className="font-extrabold text-slate-600 bg-slate-200 disabled:text-rose-400 w-10 grid place-items-center 
-      shadow-outer-slate50 rounded-md active:shadow-inner-slate50 active:bg-slate-100"
-    >
-      {props.children}
-    </button>
-  );
-}
-
-function ContentOption() {}

@@ -9,7 +9,7 @@ export default function Confirmer() {
     mode: "onChange",
     reValidateMode: "onChange",
     resolver: yupResolver(confirmSchema),
-    defaultValues: { quantity: "1" },
+    defaultValues: { quantity: "1", contentType: "mineral" },
   });
 
   return (

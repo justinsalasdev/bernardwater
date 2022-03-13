@@ -4,6 +4,7 @@ import Lazy from "yup/lib/Lazy";
 
 export type ConfirmValues = {
   quantity: string;
+  contentType: "mineral" | "distilled";
 };
 
 const confirmShape: PartialRecord<
@@ -12,11 +13,11 @@ const confirmShape: PartialRecord<
 > = {
   quantity: yup.lazy((value) =>
     value === ""
-      ? yup.string()
+      ? yup.string().required("quantity is required")
       : yup
           .number()
-          .typeError("invalid: must be a number")
-          .positive("invalid: must be greater than zero")
+          .typeError("quantity must be a number")
+          .positive("quantity must be greater than zero")
   ),
 };
 

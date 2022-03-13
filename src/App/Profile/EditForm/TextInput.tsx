@@ -1,4 +1,5 @@
 import { ErrorMessage } from "@hookform/error-message";
+import Asterisk from "components/Asterisk";
 import { useFormContext } from "react-hook-form";
 import { Profile } from "types/types";
 
@@ -19,8 +20,7 @@ export default function TextInput(props: {
         className="uppercase text-xs font-bold text-slate-500"
         htmlFor={`__${props.id}`}
       >
-        {props.title}{" "}
-        {props.isEditing && <span className="text-rose-600">*</span>}
+        {props.title} {props.isEditing && <Asterisk />}
       </label>
       <input
         id={`__${props.id}`}
