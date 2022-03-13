@@ -12,9 +12,9 @@ export default function ContentOption(props: {
   return (
     <div className="relative flex">
       <label
-        className={`w-full text-center p-3 rounded-md uppercase text-slate-600 ${
+        className={`w-full text-center p-3 rounded-sm uppercase text-slate-600 ${
           isOptionActive
-            ? "bg-slate-100 shadow-inner-slate50"
+            ? "bg-cyan-100/20 shadow-inner-slate50"
             : "active:bg-cyan-50 cursor-pointer"
         }`}
         htmlFor={`__${props.id}`}

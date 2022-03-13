@@ -20,7 +20,7 @@ export default function ConfirmForm() {
         <Label text="Quantity" classes="mb-1" />
         <QuantitySetter />
         <Label text="Content" classes="mb-1 mt-4" />
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 bg-slate-100 shadow-outer-slate50 rounded-md p-0.5">
           <ContentOption optionName="mineral" id="mineral" />
           <ContentOption optionName="distilled" id="distilled" />
         </div>

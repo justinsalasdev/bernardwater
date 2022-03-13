@@ -30,13 +30,13 @@ export default function QuantitySetter() {
 
   return (
     <>
-      <div className="grid grid-cols-a1a  gap-1">
+      <div className="grid grid-cols-a1a gap-1 shadow-outer-slate50 p-1 rounded-md bg-slate-100">
         <Indcrementor onClick={decrement}>
           <Icon type={iconTypes.minus} />
         </Indcrementor>
         <input
           {...register("quantity")}
-          className="focus:outline-none text-xl font-bold text-center text-slate-700 bg-slate-50 rounded-md shadow-inner-slate50 p-3 w-full"
+          className="focus:outline-none text-xl font-bold text-center text-slate-700 bg-slate-50 rounded-sm shadow-inner-slate50 p-3 w-full"
           type="text"
         />
         <Indcrementor onClick={increment}>
@@ -59,7 +59,7 @@ function Indcrementor(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
     <button
       {...restProps}
       className="font-extrabold text-slate-600 bg-slate-200 disabled:text-rose-400 w-10 grid place-items-center 
-      shadow-outer-slate50 rounded-md active:shadow-inner-slate50 active:bg-slate-100"
+      shadow-outer-slate50 rounded-sm active:shadow-inner-slate50 active:bg-slate-100"
     >
       {children}
     </button>

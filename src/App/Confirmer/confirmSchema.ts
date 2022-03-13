@@ -16,7 +16,8 @@ const confirmShape: PartialRecord<
       ? yup.string().required("quantity is required")
       : yup
           .number()
-          .typeError("quantity must be a number")
+          .typeError("invalid quantity")
+          .integer("invalid quantity")
           .positive("quantity must be greater than zero")
   ),
 };
