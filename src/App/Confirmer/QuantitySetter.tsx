@@ -2,7 +2,7 @@ import React from "react";
 import { useFormContext } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import Icon, { iconTypes } from "components/Icon";
-import { ConfirmValues } from "./confirmSchema";
+import { ConfirmValues } from "./ConfirmForm/confirmSchema";
 
 export default function QuantitySetter() {
   const {
